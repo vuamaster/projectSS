@@ -22,6 +22,7 @@ public class Main {
         Connection conne = null;
         PreparedStatement prst = null;
         Scanner scanner = new Scanner(System.in);
+        boolean cont = true;
         System.out.print("Nhap username: ");
         String enteredUsername = scanner.nextLine();
         System.out.print("Nhap password: ");
@@ -29,7 +30,7 @@ public class Main {
         conne = Connect.getConnection();
 
         try {
-            boolean cont = true;
+
             String query = "SELECT * FROM acounts WHERE username = ?";
             PreparedStatement statement = conne.prepareStatement(query);
             statement.setString(1, enteredUsername);

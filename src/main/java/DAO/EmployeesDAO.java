@@ -70,6 +70,31 @@ public class EmployeesDAO {
             Statement stmt = conn.createStatement();
             String sql = "UPDATE Employees SET " + col + "='" + val + "' WHERE employee_id = " + id;
             stmt.executeUpdate(sql);
+
+        } catch (Exception var14) {
+            throw new RuntimeException(var14);
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException var13) {
+                    throw new RuntimeException(var13);
+                }
+            }
+
+        }
+
+    }
+    public <T> void updateXPB(T col, T val, int id) {
+        Connection conn = null;
+
+        try {
+            Connect.getInstance();
+            conn = Connect.getConnection();
+            Statement stmt = conn.createStatement();
+            String sql = "UPDATE Employees SET " + col + "=" + val + " WHERE employee_id = " + id;
+            stmt.executeUpdate(sql);
+
         } catch (Exception var14) {
             throw new RuntimeException(var14);
         } finally {

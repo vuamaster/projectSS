@@ -34,7 +34,7 @@ public class ControlDepartments {
                         stdd.insert();
                         break;
                     case 2:
-                        System.out.println("Lua chon ma phong ban ban muon cap nhat: ");
+                        System.out.println("Lua chon ma phong ban muon cap nhat: ");
                         Integer idcapNhat = Integer.parseInt(sc.nextLine());
                         stdd.update(idcapNhat);
                         break;

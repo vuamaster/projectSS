@@ -104,6 +104,7 @@ public class DepartmentsService {
         System.out.println(std.toString());
     }
 
+
     static {
         sc = new Scanner(System.in);
     }

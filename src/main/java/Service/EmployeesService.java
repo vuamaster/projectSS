@@ -6,6 +6,7 @@
 package Service;
 
 import DAO.EmployeesDAO;
+import Model.Departments;
 import Model.Employees;
 import java.util.Iterator;
 import java.util.List;
@@ -122,7 +123,7 @@ public class EmployeesService {
     }
 
     public void delete() {
-        System.out.println("Nhap id sinh vien can xoa: ");
+        System.out.println("Nhap id nhac vien can xoa: ");
         int xoaId = sc.nextInt();
         this.EmployeesDAO.delete(xoaId);
     }
@@ -168,13 +169,15 @@ public class EmployeesService {
     public void xoaPhongBanChoNV(int idEmployee ){
 //        List<Employees> dsEm = this.EmployeesDAO.inDanhSachStd();
 
-        this.EmployeesDAO.update("manager_id",  0, idEmployee);
-        this.EmployeesDAO.update("department_id",  2, idEmployee);
+        this.EmployeesDAO.updateXPB("manager_id",  null, idEmployee);
+        this.EmployeesDAO.updateXPB("department_id",  null , idEmployee);
     }
     public void chuyenPhongBanchoNV(int id){
 //        List<Employees> dsEm = this.EmployeesDAO.inDanhSachStd();
         System.out.println("Nhap phong ban moi cho NV:");
         String newPB = sc.nextLine();
+        Employees std = this.EmployeesDAO.timNVTheoMa(id);
+        System.out.println(std.toString());
         this.EmployeesDAO.update("department_id", newPB, id);
     }
     public void thueThuNhap(){
@@ -182,7 +185,13 @@ public class EmployeesService {
         Integer id_tim = Integer.parseInt(sc.nextLine());
         Employees em = this.EmployeesDAO.timNVTheoMa(id_tim);
         double thue = em.getSalary()*0.105;
+        Employees std = this.EmployeesDAO.timNVTheoMa(id_tim);
+        System.out.println(std.toString());
         System.out.println("Thue thu nhap cua nhan vien nay la:  " + thue);
+    }
+    public void hienNV(int id){
+        Employees std = this.EmployeesDAO.timNVTheoMa(id);
+        System.out.println(std.toString());
     }
 
     static {
